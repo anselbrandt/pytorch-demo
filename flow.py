@@ -2,8 +2,8 @@ import cv2 as cv
 import numpy as np
 from PIL import Image
 
-speeds = "train.txt"
-video = "train.mp4"
+speeds = "../data/train.txt"
+video = "../data/train.mp4"
 
 
 def line_reader(file_name):
@@ -78,7 +78,7 @@ while cap.isOpened():
 
         # Save optical flow to image file
         im = Image.fromarray(rgb)
-        filename = "images/flow" + str(i) + ".jpg"
+        filename = "../data/images/flow" + str(i) + ".jpg"
         im.save(filename)
         i = i + 1
 
