@@ -50,7 +50,7 @@ while cap.isOpened():
 
         # Opens a new window and displays the input
         # frame
-        # cv.imshow("input", frame)
+        cv.imshow("input", frame)
 
         # Converts each frame to grayscale - we previously
         # only converted the first frame to grayscale
@@ -83,11 +83,11 @@ while cap.isOpened():
         i = i + 1
 
         # Opens a new window and displays the output frame
-        # cv.imshow("dense optical flow", rgb)
+        cv.imshow("dense optical flow", rgb)
 
         # Print speed
-        # speed = next(line)
-        # print(speed)
+        speed = next(line)
+        print(speed)
 
         # Updates previous frame
         prev_gray = gray
