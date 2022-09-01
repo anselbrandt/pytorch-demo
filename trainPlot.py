@@ -43,33 +43,12 @@ input_doses = torch.linspace(start=0, end=1, steps=11)
 
 model = BasicNN_train()
 
-inputs = torch.tensor([0.0, 0.5, 1.0])
-labels = torch.tensor([0.0, 1.0, 0.0])
+output_values = model(input_doses)
 
-optimizer = SGD(model.parameters(), lr=0.1)
+sns.set(style="whitegrid")
 
-print("Final bias, before optimization: " + str(model.final_bias.data) + "\n")
+sns.lineplot(x=input_doses, y=output_values.detach(), color="green", linewidth=2.5)
 
-for epoch in range(100):
-    total_loss = 0
-    for iteration in range(len(inputs)):
-
-        input_i = inputs[iteration]
-        label_i = labels[iteration]
-
-        output_i = model(input_i)
-
-        loss = (output_i - label_i) ** 2
-        loss.backward()
-
-        total_loss += float(loss)
-
-    if total_loss < 0.0001:
-        print("Num steps: " + str(epoch))
-        break
-    optimizer.step()
-    optimizer.zero_grad()
-
-    print("Step: " + str(epoch) + " Final Bias: " + str(model.final_bias.data) + "\n")
-
-print("Final bias, after optimization: " + str(model.final_bias.data))
+plt.ylabel("Effectiveness")
+plt.xlabel("Dose")
+plt.show()
