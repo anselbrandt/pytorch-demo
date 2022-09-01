@@ -60,6 +60,7 @@ for epoch in range(100):
         output_i = model(input_i)
 
         loss = (output_i - label_i) ** 2
+        loss.backward()
 
         total_loss += float(loss)
 
